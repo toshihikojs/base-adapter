@@ -17,19 +17,12 @@ function createNextTickErrorPromise(message: string): Promise<any> {
 }
 
 export class Adapter extends EventEmitter {
-  parent: any;
   options: AdapterOptions = {};
 
-  constructor(parent: any, options: AdapterOptions = {}) {
+  constructor(options: AdapterOptions = {}) {
     super();
 
     Object.defineProperties(this, {
-      parent: {
-        value: parent,
-        writable: false,
-        configurable: false,
-        enumerable: false,
-      },
       options: {
         value: util.extend({}, options || {}),
         writable: true,

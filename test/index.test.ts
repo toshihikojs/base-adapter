@@ -5,17 +5,24 @@ describe('Adapter', () => {
   let adapter: Adapter;
 
   beforeEach(() => {
-    const parent = {};
     const options: AdapterOptions = { key: 'value' };
-    adapter = new Adapter(parent, options);
+    adapter = new Adapter(options);
   });
 
   it('should create an instance of Adapter', () => {
     adapter.should.be.instanceOf(Adapter);
   });
 
-  it('should have a parent property', () => {
-    adapter.should.have.property('parent');
+  it('should create an instance of Adapter with default options', () => {
+    adapter = new Adapter();
+    adapter.should.be.instanceOf(Adapter);
+    adapter.options.should.deepEqual({});
+  });
+
+  it('should create an instance of Adapter with null options', () => {
+    adapter = new Adapter(null as any);
+    adapter.should.be.instanceOf(Adapter);
+    adapter.options.should.deepEqual({});
   });
 
   it('should have an options property', () => {
@@ -25,6 +32,15 @@ describe('Adapter', () => {
   it('should reject find method with not implemented error', async () => {
     try {
       await adapter.find({}, {});
+    } catch (err: any) {
+      err.should.be.instanceOf(Error);
+      err.message.should.equal("this adapter's find function is not implemented yet.");
+    }
+  });
+
+  it('should reject find method with not implemented error and default options', async () => {
+    try {
+      await adapter.find({});
     } catch (err: any) {
       err.should.be.instanceOf(Error);
       err.message.should.equal("this adapter's find function is not implemented yet.");
