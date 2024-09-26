@@ -37,9 +37,8 @@ The `Adapter` class provides basic database adapter functionalities.
 ```typescript
 import { Adapter, AdapterOptions } from '@toshihiko/base-adapter';
 
-const parent = {};
-const options: AdapterOptions = { key: 'value' };
-const adapter = new Adapter(parent, options);
+const options = { key: 'value' };
+const adapter = new Adapter<{ key: string }>(options);
 
 adapter.find({}, {}).catch(err => console.error(err.message));
 // Output: this adapter's find function is not implemented yet.

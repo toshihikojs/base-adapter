@@ -1,5 +1,5 @@
 import 'should';
-import { extend } from '../src/util';
+import { extend } from '../src';
 
 describe('extend', () => {
   it('should extend an object with the properties of another object', () => {

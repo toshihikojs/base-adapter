@@ -1,22 +1,16 @@
 import 'should';
-import { Adapter, AdapterOptions } from '../src/index';
+import { Adapter } from '../src/index';
 
 describe('Adapter', () => {
-  let adapter: Adapter;
+  let adapter: Adapter<{ key: string }>;
 
   beforeEach(() => {
-    const options: AdapterOptions = { key: 'value' };
+    const options = { key: 'value' };
     adapter = new Adapter(options);
   });
 
   it('should create an instance of Adapter', () => {
     adapter.should.be.instanceOf(Adapter);
-  });
-
-  it('should create an instance of Adapter with default options', () => {
-    adapter = new Adapter();
-    adapter.should.be.instanceOf(Adapter);
-    adapter.options.should.deepEqual({});
   });
 
   it('should create an instance of Adapter with null options', () => {

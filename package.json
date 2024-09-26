@@ -1,6 +1,6 @@
 {
   "name": "@toshihiko/base-adapter",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "The base adapter for Toshihiko.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
